@@ -19,6 +19,7 @@ There are assets in this repo as follows
 Brief EDA highlighted the following findings
 
 - correlation analysis of the numerical features in the training set did not detect any highly correlated variables
+- neither training nor testing sets contain any missing values (NAs) in any of the variables
 - the target variable has balanced class ratio in the trainig set thus it does not impose complexities related to imbalanced class handling
 - feature selection experiment with Boruta algorithm identified 21 significant feature variables (see the list below)
 
