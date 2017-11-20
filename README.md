@@ -1,5 +1,5 @@
 # Introduction
-This repo contains a Keras-based neural network (Deep Learning) solution to tacle a binary classification problem. 
+This repo contains a Keras-based neural network (Deep Learning) solution to tackle a binary classification problem. 
 
 This challenge has been implemented under the constraints below
 
