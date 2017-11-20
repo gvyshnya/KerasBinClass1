@@ -9,15 +9,49 @@ This challenge has been implemented under the constraints below
 # Files and Folders
 There are assets in this repo as follows
 
-- simple_keras.py - the script implementing the entire DL prediction pipeline (best neural network model setup, training, evaluation, and making predictions)
-- keras_cv.py - the script implementing a framework for n-fold cross-validation of various Keras-based NN models, using scikit-learn capabilities and Keras scikit-learn wrapper
+- simple_keras.py - the Python script implementing the entire DL prediction pipeline (best neural network model setup, training, evaluation, and making predictions)
+- keras_cv.py - the Python script implementing a framework for n-fold cross-validation of various Keras-based NN models, using scikit-learn capabilities and Keras scikit-learn wrapper
+- EDA.R - the R script implementing the brief EDA for the initial data (see details below)
 - ReadMe.md - this readme document
+
+# Exploratory Data Analysis (EDA)
+
+Brief EDA highlighted the following findings
+
+- correlation analysis of the numerical features in the training set did not detect any highly correlated variables
+- the target variable has balanced class ratio in the trainig set thus it does not impose complexities related to imbalanced class handling
+- feature selection experiment with Boruta algorithm identified 21 significant feature variables (see the list below)
+
+Boruta-based feature selection was implemented in R (please refer to EDA.R), and it identified the most significant features per the list below
+
+- V2
+- V131
+- V168
+- V170
+- V205
+- V275
+- V279
+- V287
+- V345
+- V346
+- V368
+- V384
+- V407
+- V417
+- V460
+- V487
+- V514
+- V521
+- V523
+- V524
+- V537
 
 # Implementation Notes
 
 This section explains what had been tried in the course of tackling the DL challenge, what worked and what didn't and why. 
-Brief correlation analysis of the numerical features in the training set did not detect any highly correlated variables.
+
 Sequential NN architecture has been selected as a straight-forward option to go.
+
 The initial layer composition was quite simple, per the code fragment below 
 
 `model.add(layers.Dense(16, input_dim=559, activation='relu'))
@@ -38,11 +72,13 @@ This raised the accuracy score to _87.1%_ at the model evaluation step (in avera
 Below is the brief summary of what worked and what did not work for this particular DL challenge
 
 Within the finally selected NN architecture and design, the following parameter tweaks degraded accuracy score
+
 - Setting higher drop-out rates in the dropout layer (0.15 and higher)
 - Increasing the number of epochs above 110 or making it less than 95
 - Setting batch size below 95 or above 105
 
 Other findings of the respective machine learning/DL experiements demonstrated that
+
 - Using sdg activator, although improved accuracy at the evaluation step up to 62%, still did not work out for this problem well vs. the finally selected NN model design (the best performance within SGD was demonstrated by the following setup: _sgd = opt.SGD(lr=0.017, decay=1e-6, momentum=0.75, nesterov=True)_ )
 - Using 'adam' activator did not help to improve accuracy
 - Using other combinations of activation functions at the dense layers (like “relu”-“relu”, “tanh”-“relu”, “relu”-“softmax” etc.) did not score well enough at the model evaluation step (although they performed better than the initial model described above)
